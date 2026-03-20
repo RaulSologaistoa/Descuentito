@@ -43,21 +43,21 @@ export default function OfferDetail() {
       <Header />
 
       <main className="px-4 py-6 md:px-6 xl:px-8">
-        <div className="mb-5">
-          <button
-            onClick={() => navigate('/')}
-            className="rounded-2xl border border-slate-300 bg-white px-4 py-2 font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 cursor-pointer"
-          >
-            ← Volver a ofertas
-          </button>
-        </div>
-
         <div className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
           <ImageGallery images={deal.images} title={deal.title} />
 
           <aside className="rounded-3xl bg-white p-6 shadow-sm md:p-7">
-            <div className="mb-3 inline-flex rounded-full bg-[#eef9e8] px-4 py-2 text-sm font-semibold text-[#2eb300]">
-              Oferta disponible
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <div className="inline-flex rounded-full bg-[#eef9e8] px-4 py-2 text-sm font-semibold text-[#2eb300]">
+                Oferta disponible
+              </div>
+
+              <button
+                onClick={() => navigate('/')}
+                className="text-sm font-semibold text-slate-500 transition hover:-translate-x-1 hover:text-[#2eb300] cursor-pointer"
+              >
+                ← Volver
+              </button>
             </div>
 
             <h1 className="text-2xl font-extrabold leading-tight text-slate-900 md:text-4xl">

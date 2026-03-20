@@ -1,4 +1,5 @@
 import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -18,14 +19,27 @@ export default function Header() {
           </button>
 
           <div className="invisible absolute right-0 top-14 w-64 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition-all group-hover:visible group-hover:opacity-100">
-            {['Ingresar', 'Registrarse', 'Preguntas frecuentes', 'Contáctanos'].map((item) => (
-              <button
-                key={item}
-                className="w-full rounded-xl px-4 py-3 text-left text-sm text-slate-700 transition hover:bg-[#f1faed]"
-              >
-                {item}
-              </button>
-            ))}
+            <Link
+              to="/login"
+              className="block w-full rounded-xl px-4 py-3 text-left text-sm text-slate-700 transition hover:bg-[#f1faed]"
+            >
+              Ingresar
+            </Link>
+
+            <Link
+              to="/register"
+              className="block w-full rounded-xl px-4 py-3 text-left text-sm text-slate-700 transition hover:bg-[#f1faed]"
+            >
+              Registrarse
+            </Link>
+
+            <button className="block w-full rounded-xl px-4 py-3 text-left text-sm text-slate-700 transition hover:bg-[#f1faed]">
+              Preguntas frecuentes
+            </button>
+
+            <button className="block w-full rounded-xl px-4 py-3 text-left text-sm text-slate-700 transition hover:bg-[#f1faed]">
+              Contáctanos
+            </button>
           </div>
         </div>
       </div>
