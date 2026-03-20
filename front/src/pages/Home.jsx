@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import CouponCard from '../components/CouponCard';
-import deals from '../data/deals';
+import offerList from '../data/offerList';
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className="w-full px-4 py-6">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-          {deals.map((deal) => (
+          {offerList.map((deal) => (
             <CouponCard key={deal.id} deal={deal} />
           ))}
         </div>

@@ -1,13 +1,13 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import ImageGallery from '../components/ImageGallery';
-import deals from '../data/deals';
+import offerDetails from '../data/offerDetails';
 
 export default function OfferDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const deal = deals.find((d) => String(d.id) === String(id));
+  const deal = offerDetails[id];
 
   if (!deal) {
     return (
@@ -21,7 +21,7 @@ export default function OfferDetail() {
             </p>
             <button
               onClick={() => navigate('/')}
-              className="mt-6 rounded-2xl bg-[#2eb300] px-6 py-3 font-semibold text-white transition hover:bg-[#249900]"
+              className="mt-6 rounded-2xl bg-[#2eb300] px-6 py-3 font-semibold text-white transition hover:bg-[#249900] cursor-pointer"
             >
               Volver al inicio
             </button>
