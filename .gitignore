@@ -1,0 +1,26 @@
+# Dependencias
+node_modules/
+front/node_modules/
+
+# Build
+dist/
+front/dist/
+build/
+front/build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de entorno
+.env
+.env.*
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
