@@ -1,6 +1,73 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import authUsers from '../data/authUsers';
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  });
+
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+
+    if (error) {
+      setError('');
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const email = form.email.trim().toLowerCase();
+    const password = form.password.trim();
+
+    if (!email || !password) {
+      setError('Debes completar el correo y la contraseña.');
+      return;
+    }
+
+    const user = authUsers.find(
+      (item) =>
+        item.email.toLowerCase() === email &&
+        item.password === password &&
+        item.status === 1
+    );
+
+    if (!user) {
+      setError('Correo o contraseña incorrectos.');
+      return;
+    }
+
+    localStorage.setItem('authUser', JSON.stringify(user));
+
+    if (user.roleId === 1) {
+      navigate('/admin/dashboard');
+      return;
+    }
+
+    if (user.roleId === 2) {
+      navigate('/merchant/home');
+      return;
+    }
+
+    if (user.roleId === 3) {
+      navigate('/client/home');
+      return;
+    }
+
+    setError('El rol del usuario no es válido.');
+  };
+
   return (
     <div className="min-h-screen bg-slate-100">
       <div className="grid min-h-screen lg:grid-cols-2">
@@ -33,13 +100,16 @@ export default function Login() {
               </Link>
             </div>
 
-            <form className="mt-8 space-y-5">
+            <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
               <div>
                 <label className="mb-2 block text-sm font-semibold text-slate-700">
                   Correo electrónico
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
                   placeholder="correo@ejemplo.com"
                   className="w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none transition focus:border-[#2eb300]"
                 />
@@ -51,10 +121,19 @@ export default function Login() {
                 </label>
                 <input
                   type="password"
+                  name="password"
+                  value={form.password}
+                  onChange={handleChange}
                   placeholder="••••••••"
                   className="w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none transition focus:border-[#2eb300]"
                 />
               </div>
+
+              {error && (
+                <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-600">
+                  {error}
+                </div>
+              )}
 
               <button
                 type="submit"
