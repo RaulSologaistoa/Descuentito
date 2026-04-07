@@ -41,7 +41,7 @@ export default function ClientSettings() {
               />
             </div>
 
-            <button className="mt-6 rounded-2xl bg-[#2eb300] px-6 py-3 font-bold text-white">
+            <button className="mt-6 cursor-pointer rounded-2xl bg-[#2eb300] px-6 py-3 font-bold text-white transition hover:bg-[#249900]">
               Guardar cambios
             </button>
           </section>
@@ -69,7 +69,7 @@ export default function ClientSettings() {
               />
             </div>
 
-            <button className="mt-6 rounded-2xl bg-slate-900 px-6 py-3 font-bold text-white">
+            <button className="mt-6 cursor-pointer rounded-2xl bg-slate-900 px-6 py-3 font-bold text-white transition hover:bg-slate-800">
               Actualizar contraseña
             </button>
           </section>
