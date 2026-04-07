@@ -61,7 +61,7 @@ export default function Login() {
     }
 
     if (user.roleId === 3) {
-      navigate('/client/home');
+      navigate('/');
       return;
     }
 

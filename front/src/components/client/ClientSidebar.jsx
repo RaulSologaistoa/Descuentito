@@ -2,10 +2,6 @@ import { Link, useLocation } from 'react-router-dom';
 
 const menuItems = [
   {
-    label: 'Inicio',
-    path: '/client/home'
-  },
-  {
     label: 'Mi perfil',
     path: '/client/settings'
   },

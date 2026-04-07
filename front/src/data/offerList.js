@@ -4,7 +4,7 @@ const offerList = [
     title: 'Oferta demo',
     oldPrice: 'Q450.00',
     price: 'Q299.00',
-    expiresAt: '2026-03-22T23:30:00',
+    expiresAt: '2026-04-22T23:30:00',
     coverImage: 'https://picsum.photos/400/300'
   },
   {
@@ -12,7 +12,7 @@ const offerList = [
     title: 'Escapada de fin de semana todo incluido para 2 personas',
     oldPrice: 'Q3040.00',
     price: 'Q1999.00',
-    expiresAt: '2026-03-23T23:30:00',
+    expiresAt: '2026-04-23T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -20,7 +20,7 @@ const offerList = [
     title: 'Retenedor dental o guarda para rechinado con precio especial',
     oldPrice: 'Q500.00',
     price: 'Q149.00',
-    expiresAt: '2026-03-24T23:30:00',
+    expiresAt: '2026-04-24T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -28,7 +28,7 @@ const offerList = [
     title: 'Paquete dental con limpieza, pulido y sellantes',
     oldPrice: 'Q1200.00',
     price: 'Q259.00',
-    expiresAt: '2026-03-25T23:30:00',
+    expiresAt: '2026-04-25T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -36,7 +36,7 @@ const offerList = [
     title: 'Exámenes de laboratorio completos con promoción exclusiva',
     oldPrice: 'Q2075.00',
     price: 'Q499.00',
-    expiresAt: '2026-03-26T23:30:00',
+    expiresAt: '2026-04-26T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -44,7 +44,7 @@ const offerList = [
     title: 'Estadía boutique con piscina, desayunos y acceso privado',
     oldPrice: 'Q1500.00',
     price: 'Q799.00',
-    expiresAt: '2026-03-27T23:30:00',
+    expiresAt: '2026-04-27T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -52,7 +52,7 @@ const offerList = [
     title: 'Tratamiento facial premium con descuento especial',
     oldPrice: 'Q450.00',
     price: 'Q299.00',
-    expiresAt: '2026-03-27T23:30:00',
+    expiresAt: '2026-04-27T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -60,7 +60,7 @@ const offerList = [
     title: 'Escapada de fin de semana todo incluido para 2 personas',
     oldPrice: 'Q3040.00',
     price: 'Q1999.00',
-    expiresAt: '2026-03-27T23:30:00',
+    expiresAt: '2026-04-27T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -68,7 +68,7 @@ const offerList = [
     title: 'Retenedor dental o guarda para rechinado con precio especial',
     oldPrice: 'Q500.00',
     price: 'Q149.00',
-    expiresAt: '2026-03-27T23:30:00',
+    expiresAt: '2026-04-27T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -76,7 +76,7 @@ const offerList = [
     title: 'Paquete dental con limpieza, pulido y sellantes',
     oldPrice: 'Q1200.00',
     price: 'Q259.00',
-    expiresAt: '2026-03-27T23:30:00',
+    expiresAt: '2026-04-27T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -84,7 +84,7 @@ const offerList = [
     title: 'Exámenes de laboratorio completos con promoción exclusiva',
     oldPrice: 'Q2075.00',
     price: 'Q499.00',
-    expiresAt: '2026-03-27T23:30:00',
+    expiresAt: '2026-04-27T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -92,7 +92,7 @@ const offerList = [
     title: 'Estadía boutique con piscina, desayunos y acceso privado',
     oldPrice: 'Q1500.00',
     price: 'Q799.00',
-    expiresAt: '2026-03-27T23:30:00',
+    expiresAt: '2026-04-27T23:30:00',
     coverImage: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'
   }
 ];
