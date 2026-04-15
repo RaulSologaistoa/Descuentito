@@ -7,6 +7,8 @@ import LoginAdmin from './pages/LoginAdmin';
 import ClientSettings from './pages/client/ClientSettings';
 import ClientCoupons from './pages/client/ClientCoupons';
 import CouponRedeem from './pages/CouponRedeem';
+import MerchantHome from './pages/merchant/MerchantHome';
+import MerchantCoupons from './pages/merchant/MerchantCoupons';
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
         <Route path="/client/settings" element={<ClientSettings />} />
         <Route path="/client/coupons" element={<ClientCoupons />} />
         <Route path="/coupon/:id" element={<CouponRedeem />} />
+        <Route path="/merchant/home" element={<MerchantHome />} />
+        <Route path="/merchant/coupons" element={<MerchantCoupons />} />
       </Routes>
     </BrowserRouter>
   );
