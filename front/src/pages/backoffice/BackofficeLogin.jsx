@@ -54,30 +54,9 @@ export default function BackofficeLogin() {
   return (
     <div className="bo-login-page">
       <div className="bo-login-card">
-        <div className="bo-login-left">
-          <div className="bo-graphic-circle">
-            <div className="bo-laptop">
-              <div className="bo-laptop-screen">
-                <div className="bo-user-icon">
-                  <div className="bo-user-head"></div>
-                  <div className="bo-user-body"></div>
-                </div>
-              </div>
-              <div className="bo-laptop-base"></div>
-            </div>
-          </div>
-
-          <span className="bo-shape bo-shape-blue bo-shape-1"></span>
-          <span className="bo-shape bo-shape-green bo-shape-2"></span>
-          <span className="bo-shape bo-shape-blue bo-shape-3"></span>
-          <span className="bo-shape bo-shape-gray bo-shape-4"></span>
-          <span className="bo-shape bo-shape-green bo-shape-5"></span>
-        </div>
-
         <div className="bo-login-right">
           <div className="bo-login-brand">
-            <h1>Backoffice</h1>
-            <p>Acceso restringido para personal autorizado</p>
+            <h1>Descuentito</h1>
           </div>
 
           <form onSubmit={handleSubmit} className="bo-login-form">

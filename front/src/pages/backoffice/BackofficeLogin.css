@@ -14,45 +14,25 @@
 
 .bo-login-card {
   width: 100%;
-  max-width: 1000px;
-  min-height: 560px;
+  max-width: 420px;
+  padding: 40px 30px;
   background: #f8f8f8;
   border: 1px solid #1f1f1f;
   border-radius: 18px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
 }
 
-.bo-login-left,
 .bo-login-right {
-  position: relative;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .bo-login-left {
   padding: 40px;
 }
 
-.bo-graphic-circle {
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: #ececec;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.bo-laptop {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .bo-laptop-screen {
   width: 155px;
@@ -109,56 +89,6 @@
   top: 0;
 }
 
-.bo-shape {
-  position: absolute;
-}
-
-.bo-shape-1 {
-  width: 18px;
-  height: 18px;
-  border: 3px solid #10a7df;
-  border-radius: 50%;
-  top: 30%;
-  left: 16%;
-}
-
-.bo-shape-2 {
-  width: 0;
-  height: 0;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 16px solid #79cc56;
-  bottom: 26%;
-  left: 14%;
-}
-
-.bo-shape-3 {
-  width: 12px;
-  height: 12px;
-  border: 3px solid #10a7df;
-  border-radius: 50%;
-  bottom: 24%;
-  right: 21%;
-}
-
-.bo-shape-4 {
-  width: 12px;
-  height: 12px;
-  border: 3px solid #d9d9d9;
-  top: 25%;
-  right: 28%;
-}
-
-.bo-shape-5 {
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 16px solid #79cc56;
-  top: 45%;
-  right: 14%;
-}
-
 .bo-login-right {
   padding: 40px;
   flex-direction: column;
@@ -184,7 +114,6 @@
 
 .bo-login-form {
   width: 100%;
-  max-width: 340px;
 }
 
 .bo-input-group {
@@ -293,7 +222,7 @@
   }
 
   .bo-login-brand h1 {
-    font-size: 1.75rem;
+    font-size: 1.8rem;
   }
 
   .bo-login-brand p {
