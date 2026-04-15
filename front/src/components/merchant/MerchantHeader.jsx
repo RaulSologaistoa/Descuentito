@@ -10,7 +10,7 @@ export default function MerchantHeader() {
     authUser?.firstName ||
     authUser?.name ||
     authUser?.nombre ||
-    'Proveedor';
+    'Comercio';
 
   const handleLogout = () => {
     localStorage.removeItem('authUser');
@@ -21,7 +21,7 @@ export default function MerchantHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="flex w-full items-center justify-between px-4 py-4 md:px-6">
-        <Link to="/" className="flex h-14 items-center">
+        <Link to="/merchant/home" className="flex h-14 items-center">
           <img
             src={logo}
             alt="Descuentito"
@@ -46,7 +46,7 @@ export default function MerchantHeader() {
               to="/merchant/coupons"
               className="block w-full rounded-xl px-4 py-3 text-sm text-slate-700 transition hover:bg-[#f1faed]"
             >
-              Mantenimiento de cupones
+              Administración de Cupones
             </Link>
 
             <button

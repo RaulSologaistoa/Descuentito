@@ -12,8 +12,19 @@ const initialForm = {
   imageFiles: []
 };
 
-export default function MerchantCouponForm() {
-  const [form, setForm] = useState(initialForm);
+export default function MerchantCouponForm({ initialData }) {
+  const [form, setForm] = useState(() => {
+    if (!initialData) {
+      return initialForm;
+    }
+
+    return {
+      ...initialForm,
+      ...initialData,
+      coverImageFile: null,
+      imageFiles: []
+    };
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,6 +82,10 @@ export default function MerchantCouponForm() {
       formData.append('schedule', form.schedule);
       formData.append('expiresAt', form.expiresAt);
 
+      if (initialData?.id) {
+        formData.append('id', initialData.id);
+      }
+
       if (form.coverImageFile) {
         formData.append('coverImage', form.coverImageFile);
       }
@@ -81,7 +96,7 @@ export default function MerchantCouponForm() {
 
       // Aquí irá tu endpoint real
       // const response = await fetch('https://tu-api.com/api/merchant/coupons', {
-      //   method: 'POST',
+      //   method: initialData?.id ? 'PUT' : 'POST',
       //   body: formData
       // });
 
@@ -120,7 +135,7 @@ export default function MerchantCouponForm() {
           value={form.oldPrice}
           onChange={handleChange}
           placeholder="Precio normal"
-          className="rounded-2xl border px-4 py-3"
+          className="w-full rounded-2xl border px-4 py-3"
         />
 
         <input
@@ -128,7 +143,7 @@ export default function MerchantCouponForm() {
           value={form.price}
           onChange={handleChange}
           placeholder="Precio oferta"
-          className="rounded-2xl border px-4 py-3"
+          className="w-full rounded-2xl border px-4 py-3"
         />
       </div>
 
@@ -140,117 +155,131 @@ export default function MerchantCouponForm() {
         className="w-full rounded-2xl border px-4 py-3"
       />
 
-      <input
-        name="schedule"
-        value={form.schedule}
-        onChange={handleChange}
-        placeholder="Horario"
-        className="w-full rounded-2xl border px-4 py-3"
-      />
-
-      <input
-        type="datetime-local"
-        name="expiresAt"
-        value={form.expiresAt}
-        onChange={handleChange}
-        className="w-full rounded-2xl border px-4 py-3"
-      />
-
-      <div className="rounded-3xl border border-slate-200 p-4">
-        <label className="mb-2 block text-sm font-semibold text-slate-700">
-          Imagen de portada
-        </label>
-
-        <label className="flex cursor-pointer items-center justify-between rounded-2xl border px-4 py-3">
-          <span className="text-sm text-slate-600">
-            {form.coverImageFile
-              ? form.coverImageFile.name
-              : 'Seleccionar imagen de portada'}
-          </span>
-
-          <span className="rounded-xl bg-[#2eb300] px-3 py-1 text-xs font-semibold text-white">
-            Subir
-          </span>
-
+      <div className="grid gap-5 md:grid-cols-2">
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">
+            Horario
+          </label>
           <input
-            type="file"
-            accept="image/*"
-            onChange={handleCoverImageChange}
-            className="hidden"
+            name="schedule"
+            value={form.schedule}
+            onChange={handleChange}
+            placeholder="Horario"
+            className="w-full rounded-2xl border px-4 py-3"
           />
-        </label>
+        </div>
 
-        {form.coverImageFile && (
-          <p className="mt-3 text-sm text-slate-500">
-            Archivo seleccionado: {form.coverImageFile.name}
-          </p>
-        )}
-
-        {coverPreview && (
-          <img
-            src={coverPreview}
-            alt="Vista previa portada"
-            className="mt-4 h-48 w-full rounded-2xl object-cover"
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">
+            Fecha de finalización
+          </label>
+          <input
+            type="datetime-local"
+            name="expiresAt"
+            value={form.expiresAt}
+            onChange={handleChange}
+            className="w-full rounded-2xl border px-4 py-3"
           />
-        )}
+        </div>
       </div>
 
-      <div className="rounded-3xl border border-slate-200 p-4">
-        <label className="mb-2 block text-sm font-semibold text-slate-700">
-          Imágenes del cupón
-        </label>
+      <div className="grid gap-5 md:grid-cols-2">
+        <div className="rounded-3xl border border-slate-200 p-4">
+          <label className="mb-2 block text-sm font-semibold text-slate-700">
+            Imagen de portada
+          </label>
 
-        <label className="flex cursor-pointer items-center justify-between rounded-2xl border px-4 py-3">
-          <span className="text-sm text-slate-600">
-            {form.imageFiles.length > 0
-              ? `${form.imageFiles.length} imagen(es) seleccionada(s)`
-              : 'Seleccionar imágenes del cupón'}
-          </span>
+          <label className="flex cursor-pointer items-center justify-between rounded-2xl border px-4 py-3">
+            <span className="text-sm text-slate-600">
+              {form.coverImageFile
+                ? form.coverImageFile.name
+                : 'Seleccionar imagen de portada'}
+            </span>
 
-          <span className="rounded-xl bg-[#2eb300] px-3 py-1 text-xs font-semibold text-white">
-            Subir
-          </span>
+            <span className="rounded-xl bg-[#2eb300] px-3 py-1 text-xs font-semibold text-white">
+              Subir
+            </span>
 
-          <input
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={handleImagesChange}
-            className="hidden"
-          />
-        </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleCoverImageChange}
+              className="hidden"
+            />
+          </label>
 
-        {form.imageFiles.length > 0 && (
-          <p className="mt-3 text-sm text-slate-500">
-            {form.imageFiles.length} imagen(es) seleccionada(s)
-          </p>
-        )}
+          {form.coverImageFile && (
+            <p className="mt-3 text-sm text-slate-500">
+              Archivo seleccionado: {form.coverImageFile.name}
+            </p>
+          )}
 
-        {imagePreviews.length > 0 && (
-          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
-            {imagePreviews.map((image, index) => (
-              <div
-                key={`${image.name}-${index}`}
-                className="overflow-hidden rounded-2xl border border-slate-200"
-              >
-                <img
-                  src={image.url}
-                  alt={`Vista previa ${index + 1}`}
-                  className="h-32 w-full object-cover"
-                />
-                <div className="p-2 text-xs text-slate-500">
-                  {image.name}
+          {coverPreview && (
+            <img
+              src={coverPreview}
+              alt="Vista previa portada"
+              className="mt-4 h-48 w-full rounded-2xl object-cover"
+            />
+          )}
+        </div>
+
+        <div className="rounded-3xl border border-slate-200 p-4">
+          <label className="mb-2 block text-sm font-semibold text-slate-700">
+            Imágenes del cupón
+          </label>
+
+          <label className="flex cursor-pointer items-center justify-between rounded-2xl border px-4 py-3">
+            <span className="text-sm text-slate-600">
+              {form.imageFiles.length > 0
+                ? `${form.imageFiles.length} imagen(es) seleccionada(s)`
+                : 'Seleccionar imágenes del cupón'}
+            </span>
+
+            <span className="rounded-xl bg-[#2eb300] px-3 py-1 text-xs font-semibold text-white">
+              Subir
+            </span>
+
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleImagesChange}
+              className="hidden"
+            />
+          </label>
+
+          {form.imageFiles.length > 0 && (
+            <p className="mt-3 text-sm text-slate-500">
+              {form.imageFiles.length} imagen(es) seleccionada(s)
+            </p>
+          )}
+
+          {imagePreviews.length > 0 && (
+            <div className="mt-4 grid grid-cols-2 gap-4">
+              {imagePreviews.map((image, index) => (
+                <div
+                  key={`${image.name}-${index}`}
+                  className="overflow-hidden rounded-2xl border border-slate-200"
+                >
+                  <img
+                    src={image.url}
+                    alt={`Vista previa ${index + 1}`}
+                    className="h-32 w-full object-cover"
+                  />
+                  <div className="p-2 text-xs text-slate-500">
+                    {image.name}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      <div>
+      <div className="flex justify-center pt-2">
         <button
           type="submit"
-          className="cursor-pointer rounded-2xl bg-[#2eb300] px-6 py-3 font-bold text-white transition hover:bg-[#249900]"
+          className="cursor-pointer rounded-2xl bg-[#2eb300] px-8 py-3 font-bold text-white transition hover:bg-[#249900]"
         >
           Guardar cupón
         </button>

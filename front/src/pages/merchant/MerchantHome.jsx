@@ -50,8 +50,8 @@ export default function MerchantHome() {
 
       <div className="w-full px-4 py-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <h1 className="text-3xl font-extrabold text-slate-900">
-            Proveedor
+          <h1 className="text-3xl font-extrabold text-slate-900" style={{margin:0}}>
+            Comercio
           </h1>
 
           <div className="flex flex-col gap-3 sm:flex-row lg:w-auto">
@@ -71,7 +71,7 @@ export default function MerchantHome() {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
+        <div className="mt-6 grid gap-6 md:grid-cols-3" style={{textAlign: 'center'}}>
           <div className="rounded-3xl bg-white p-6 shadow-sm">
             <p className="text-sm font-semibold text-slate-500">
               Cupones activos

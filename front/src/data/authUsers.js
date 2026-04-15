@@ -16,7 +16,7 @@ const authUsers = [
     roleId: 2,
     role: 'comercio',
     status: 1,
-    firstName: 'Laura',
+    firstName: 'Eduardo',
     lastName: 'Comercio',
     email: 'comercio@correo.com',
     password: '123456',

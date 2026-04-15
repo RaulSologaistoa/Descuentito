@@ -6,6 +6,7 @@ import merchantCoupons from '../../data/merchantCoupons';
 export default function MerchantCoupons() {
   const [coupons] = useState(merchantCoupons);
   const [showForm, setShowForm] = useState(false);
+  const [selectedCoupon, setSelectedCoupon] = useState(null);
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900">
@@ -14,7 +15,7 @@ export default function MerchantCoupons() {
       <div className="w-full px-4 py-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="text-3xl font-extrabold text-slate-900">
+            <h1 className="text-3xl font-extrabold text-slate-900" style={{margin:0}}>
               Mantenimiento de cupones
             </h1>
           </div>
@@ -52,7 +53,13 @@ export default function MerchantCoupons() {
                     {new Date(coupon.expiresAt).toLocaleDateString()}
                   </td>
                   <td className="px-4 py-3">
-                    <button className="cursor-pointer rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-50">
+                    <button
+                      onClick={() => {
+                        setSelectedCoupon(coupon);
+                        setShowForm(true);
+                      }}
+                      className="cursor-pointer rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-50"
+                    >
                       Editar
                     </button>
                   </td>
@@ -68,18 +75,20 @@ export default function MerchantCoupons() {
           <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl bg-white p-6 shadow-xl">
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-2xl font-extrabold text-slate-900">
-                Nuevo cupón
+                {selectedCoupon ? 'Editar cupón' : 'Nuevo cupón'}
               </h2>
-
               <button
-                onClick={() => setShowForm(false)}
+                onClick={() => {
+                  setShowForm(false);
+                  setSelectedCoupon(null);
+                }}
                 className="cursor-pointer rounded-2xl border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-50"
               >
                 Cerrar
               </button>
             </div>
 
-            <MerchantCouponForm />
+            <MerchantCouponForm initialData={selectedCoupon} />
           </div>
         </div>
       )}

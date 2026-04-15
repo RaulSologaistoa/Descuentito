@@ -9,6 +9,7 @@ import ClientCoupons from './pages/client/ClientCoupons';
 import CouponRedeem from './pages/CouponRedeem';
 import MerchantHome from './pages/merchant/MerchantHome';
 import MerchantCoupons from './pages/merchant/MerchantCoupons';
+import BackofficeLogin from './pages/backoffice/BackofficeLogin';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/coupon/:id" element={<CouponRedeem />} />
         <Route path="/merchant/home" element={<MerchantHome />} />
         <Route path="/merchant/coupons" element={<MerchantCoupons />} />
+        <Route path="/backoffice/login" element={<BackofficeLogin />} />
       </Routes>
     </BrowserRouter>
   );
