@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import authUsers from '../../data/authUsers';
 import './BackofficeLogin.css';
 
 export default function BackofficeLogin() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    user: '',
+    email: '',
     password: '',
   });
 
@@ -25,30 +26,48 @@ export default function BackofficeLogin() {
     e.preventDefault();
     setError('');
 
-    const user = form.user.trim();
+    const email = form.email.trim().toLowerCase();
     const password = form.password.trim();
 
-    if (!user || !password) {
-      setError('Ingresa usuario y contraseña.');
+    if (!email || !password) {
+      setError('Ingresa correo y contraseña.');
       return;
     }
 
-    // Simulación temporal de login
-    // Luego aquí conectamos API real
-    if (user === 'backoffice' && password === '1234') {
-      localStorage.setItem(
-        'user',
-        JSON.stringify({
-          username: user,
-          role: 'backoffice',
-        })
-      );
+    const userFound = authUsers.find(
+      (user) =>
+        user.email.toLowerCase() === email &&
+        user.password === password
+    );
 
-      navigate('/backoffice/dashboard');
+    if (!userFound) {
+      setError('Credenciales inválidas.');
       return;
     }
 
-    setError('Credenciales inválidas.');
+    if (userFound.status !== 1) {
+      setError('El usuario no está activo.');
+      return;
+    }
+
+    if (userFound.role !== 'admin' || userFound.roleId !== 1) {
+      setError('Este acceso es exclusivo para backoffice.');
+      return;
+    }
+
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        id: userFound.id,
+        roleId: userFound.roleId,
+        role: 'backoffice',
+        firstName: userFound.firstName,
+        lastName: userFound.lastName,
+        email: userFound.email,
+      })
+    );
+
+    navigate('/backoffice/dashboard');
   };
 
   return (
@@ -63,10 +82,10 @@ export default function BackofficeLogin() {
             <div className="bo-input-group">
               <span className="bo-input-icon">👤</span>
               <input
-                type="text"
-                name="user"
-                placeholder="Usuario"
-                value={form.user}
+                type="email"
+                name="email"
+                placeholder="Correo"
+                value={form.email}
                 onChange={handleChange}
                 autoComplete="username"
               />
